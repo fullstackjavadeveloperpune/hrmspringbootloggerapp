@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employees")
@@ -43,6 +44,11 @@ public class EmployeeController {
     @GetMapping("/findall")
     public ResponseEntity<List<Employee>> findAll(){
         return  new ResponseEntity<>(employeeService.findAll(),HttpStatus.OK);
+    }
+
+    @GetMapping("/findbyid/{empId}")
+    public ResponseEntity<Optional<Employee>> findAll(@PathVariable long empId) {
+        return  new ResponseEntity<>(employeeService.findById(empId),HttpStatus.OK);
     }
 
 
