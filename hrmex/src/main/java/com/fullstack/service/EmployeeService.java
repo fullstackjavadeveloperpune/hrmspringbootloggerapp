@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -22,5 +24,10 @@ public class EmployeeService implements IEmployeeService {
     public boolean signIn(String empEmailId, String empPassword) {
         log.info("Inside SignIn Service method");
         return employeeRepo.findByEmpEmailIdAndEmpPassword(empEmailId, empPassword) != null;
+    }
+
+    @Override
+    public List<Employee> findAll() {
+        return employeeRepo.findAll();
     }
 }
