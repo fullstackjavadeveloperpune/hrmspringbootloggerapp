@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +30,10 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public List<Employee> findAll() {
         return employeeRepo.findAll();
+    }
+
+    @Override
+    public Optional<Employee> findById(long empId) {
+        return employeeRepo.findById(empId);
     }
 }
